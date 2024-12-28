@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table Genrator - JS </title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-size: 1.2rem;
+        }
+        body{
+            background-color: dodgerblue;
+        }
+
+        .conatiner {
+            width: 100vw;
+            height: 100vh;
+            background-color: dodgerblue;
+            display: flex;
+            /* justify-content: space-between; */
+            align-items: center;
+            flex-direction: column;
+        }
+
+        form {
+            margin-top: 4px;
+            border-radius: 20px;
+            border: 2px solid rgb(73, 89, 235);
+            width: 65%;
+            background-color: rgb(202, 247, 244);
+            padding: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            /* flex-direction: column; */
+        }
+
+        input {
+            margin-right: 12px;
+            margin-left: 3px;
+        }
+
+        input[type="number"] {
+            border-radius: 5px;
+            text-align: center;
+            width: 20%;
+        }
+
+        input[type="submit"] {
+            /* text-align: center; */
+            padding: 2px 25px;
+            margin-top: 5px;
+            border-radius: 20px;
+            background-color: dodgerblue;
+            color: white;
+        }
+
+        input[type="submit"]:hover {
+            /* padding: 2px 20px; */
+            background-color: white;
+            color: dodgerblue;
+
+        }
+
+        .table {
+
+            margin-top: 5px;
+            border-radius: 20px;
+            width: 50%;
+            display: flex;
+            justify-content: center;
+            /* text-align: center; */
+            align-items: center;
+        }
+
+        .table ul {
+            list-style-type: none;
+            padding: 19px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            /* text-align: center; */
+            align-items: center;
+            flex-direction: column;
+            /* border: 2px solid red; */
+        }
+
+        ul li {
+            font-size: 1.9rem;
+            background-color: rgb(202, 247, 244);
+            margin: 5px;
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            border-radius: 20px;
+            width: 50%;
+            word-spacing: 9px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="conatiner">
+        <form action="#" method="post">
+            <label for="tab">Table:</label>
+            <input type="number" required name="table" id="tab" value="0" placeholder="Enter Table , eg: 2">
+            <label for="siz">Size:</label>
+            <input type="number" required name="size" id="siz" value="0" placeholder="Enter Size , eg: 10">
+            <input type="submit" name="submit" id="submit" value="Generate!">
+        </form>
+        <div class="table">
+            <ul class="list">
+
+            </ul>
+        </div>
+    </div>
+    <script>
+        document.querySelector('#submit').addEventListener('click', function () {
+
+            event.preventDefault();
+            const tab = parseInt(document.querySelector('#tab').value);
+            const siz = parseInt(document.querySelector('#siz').value);
+            const list = document.querySelector('.list');
+            let c = 1;
+            if (tab != 0 && siz != 0) {
+                while (c <= siz) {
+
+                    list.innerHTML += "<li>" + tab + " x " + c + " = " + tab * c + "</li>";
+
+
+
+                    c++;
+                }
+            } else {
+                document.querySelector('.table').innerHTML = "<ul><li style='width:100%;font-size:1.4rem;color: red;'>Table and Size must be not equal to Zero</ul></li>";
+            }
+
+
+
+        })
+
+    </script>
+</body>
+
+</html>
